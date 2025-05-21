@@ -1,115 +1,181 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+// pages/index.tsx
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
+  { href: '/services', label: 'Services' },
+  { href: '/newsletter', label: 'Newsletter' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/forms', label: 'Forms' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/search', label: 'Search' },
+  { href: '/sitemap', label: 'Site Map' },
+  { href: '/accreditations', label: 'Accreditations' }
+];
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const Home: NextPage = () => (
+  <>
+    <Head>
+      <title>Molecular Diagnostic Services, Inc.</title>
+      <meta charSet="UTF-8" />
+    </Head>
 
-export default function Home() {
-  return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <nav className="navbar">
+      <div className="nav-container">
+        <Link href="/">
+          <img src="/images/header3.gif" alt="MDS Logo" className="logo" />
+        </Link>
+        <div className="nav-links">
+          {navLinks.map(link => (
+            <Link key={link.href} href={link.href} className="nav-link">
+              {link.label}
+            </Link>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
-}
+      </div>
+    </nav>
+
+    <main className="main-content">
+      <section className="intro">
+        <h1>Molecular Biology Services</h1>
+        <p>
+          Molecular Diagnostic Services, Inc., an independent contract service organization,
+          has been operating since 1992 providing comprehensive cellular and molecular biology,
+          toxicology, microbiology, sterility assurance, and biocompatibility services to pharmaceutical,
+          biotechnology, medical device, and research institutions. The services are designed for clients'
+          needs, both GLP-compliant for regulatory submission and non-GLP screening for product research
+          and development.
+        </p>
+        <Link href="/contact" className="cta-button">
+          Contact Us
+        </Link>
+      </section>
+
+      <section className="services-grid">
+        <div className="service-card">
+          <img src="/images/moleculesmall.gif" alt="Molecules" />
+          <h2>Molecular Diagnostics</h2>
+          <p>Comprehensive molecular assays for research and regulatory needs.</p>
+        </div>
+        <div className="service-card">
+          <img src="/images/rrdahead.gif" alt="RRDA" />
+          <h2>Animal Testing Services</h2>
+          <p>AAALAC, USDA, NIH accredited vivarium for GLP and non-GLP studies.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer className="footer">
+      <p>&copy; {new Date().getFullYear()} Molecular Diagnostic Services, Inc.</p>
+    </footer>
+
+    <style jsx>{`
+      /* Global resets */
+      :global(body) {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: #333;
+        background: #f9f9f9;
+      }
+
+      .navbar {
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+      }
+      .logo {
+        height: 50px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: #555;
+        font-weight: 500;
+        padding: 0.5rem 0;
+      }
+      .nav-link:hover {
+        color: #0070f3;
+      }
+
+      .main-content {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      .intro {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .intro h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .intro p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+      }
+      .cta-button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: #0070f3;
+        color: #fff;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .cta-button:hover {
+        background: #005bb5;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+      .service-card {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        text-align: center;
+      }
+      .service-card img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+      .service-card h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 2rem 0;
+        background: #fff;
+        margin-top: 4rem;
+        box-shadow: 0 -1px 3px rgba(0,0,0,0.05);
+      }
+    `}</style>
+  </>
+);
+
+export default Home;
